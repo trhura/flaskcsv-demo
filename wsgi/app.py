@@ -1,18 +1,19 @@
 # Author: Thura Hlaing <trhura@gmail.com>
-# Time-stamp: <2013-10-30 14:59:36 (trhura)>
+# Time-stamp: <2013-10-30 15:03:42 (trhura)>
 
 __author__ = "Thura Hlaing <trhura@gmail.com>"
 
 from flask import Flask
 from flask.ext.bootstrap import Bootstrap
+from flask import render_template
 
 app = Flask(__name__)
-app = Bootstrap(app)
+Bootstrap(app)
 
 @app.route('/')
-@app.route('/hello')
+@app.route('/home')
 def index():
-    return "Hello from OpenShift"
+    return render_template("home.html")
 
 if __name__ == '__main__':
     app.run(debug=True)
