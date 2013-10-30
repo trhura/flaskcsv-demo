@@ -1,8 +1,16 @@
 {% extends "bootstrap/base.html" %}
 
+{% block styles %}
+{{ super() }}
+<link rel="stylesheet" href="{{url_for('.static', filename='css/local.css')}}">
+{% endblock %}
+
+{% block body %}
+<div class="container">
+{{ super() }}
+</div>
+{% endblock %}
 
 {% block navbar %}
-<div class="navbar navbar-fixed-top navbar-inverse">
   <!-- ... -->
-</div>
 {% endblock %}
