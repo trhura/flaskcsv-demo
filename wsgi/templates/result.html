@@ -4,7 +4,13 @@
 
 <div class="well">
   <h1>Download updated csv file</h1>
-  <p>Please, download your update csv file {{ email }} here.</p>
+
+  {% if message %}
+  <p><em>{{ message }}</em></p>
+  {% endif %}
+
+  <p class="pull-right"><a href="/">&lt;&lt; back to home</a></p>
+  <br/>
 </div>
 
 {% endblock %}
