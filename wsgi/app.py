@@ -1,5 +1,5 @@
 # Author: Thura Hlaing <trhura@gmail.com>
-# Time-stamp: <2013-10-30 16:19:04 (trhura)>
+# Time-stamp: <2013-10-30 17:00:16 (trhura)>
 
 __author__ = "Thura Hlaing <trhura@gmail.com>"
 
@@ -7,7 +7,11 @@ from flask import Flask
 from flask.ext.bootstrap import Bootstrap
 from flask import render_template
 from flask import request
+from flask import send_file
+
 import csv
+import tempfile
+import random
 
 app = Flask(__name__)
 Bootstrap(app)
@@ -21,10 +25,16 @@ def index():
         if not file:
             message = "Csv file not attached."
         else:
-            csvReader = csv.reader(file, delimiter=",")
-            message = ""
-            for row in csvReader:
-                message += " ".join(row)
+            csvReader = csv.reader(file,delimiter=",")
+
+            with tempfile.NamedTemporaryFile(mode="w") as oFile:
+                csvWriter = csv.writer(oFile,delimiter=",")
+                for row in csvReader:
+                    csvWriter.writerow(row + ['09-731 558 ' + str(random.randint(111,999)) ])
+                oFile.flush()
+                oFile.seek(0,0)
+
+                return send_file(oFile.name, mimetype='text/csv')
 
         kwargs = {
             'message' : message
