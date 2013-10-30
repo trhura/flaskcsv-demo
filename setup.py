@@ -6,5 +6,8 @@ setup(name='YourAppName',
       author='Your Name',
       author_email='example@example.com',
       url='http://www.python.org/sigs/distutils-sig/',
-      install_requires=['Flask==0.10'],
+      install_requires=[
+          'Flask==0.10',
+          'Flask-Bootstrap==3.0.0.1'
+      ],
      )
