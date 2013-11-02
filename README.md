@@ -1,3 +1,5 @@
-The OpenShift `python` cartridge documentation can be found at:
+About
+======
 
-https://github.com/openshift/origin-server/tree/master/cartridges/openshift-origin-cartridge-python/README.md
+Example flask web application which adds a new field to uploaded csv
+files, configured to be deployed on Redhat's openshift.
